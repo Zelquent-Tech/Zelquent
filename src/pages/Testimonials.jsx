@@ -304,8 +304,6 @@ export default function Testimonials() {
             <div className="mb-8">
               <article
                 className="relative overflow-hidden rounded-2xl border-2 border-[#66FCF1]/30 bg-gradient-to-br from-[#1F2833] to-[#1A222A] p-8"
-                itemScope
-                itemType="https://schema.org/Review"
               >
                 <Quote
                   className="absolute right-6 top-6 h-16 w-16 text-[#66FCF1]/10"
@@ -316,7 +314,7 @@ export default function Testimonials() {
                     {testimonials[0].avatar}
                   </div>
                   <div>
-                    <div className="text-lg font-bold text-white" itemProp="author">
+                    <div className="text-lg font-bold text-white" >
                       {testimonials[0].name}
                     </div>
                     <div className="text-sm text-[#66FCF1]">
@@ -333,7 +331,7 @@ export default function Testimonials() {
                     ))}
                   </div>
                 </div>
-                <p className="text-lg leading-relaxed text-[#C5C6C7]" itemProp="reviewBody">
+                <p className="text-lg leading-relaxed text-[#C5C6C7]" >
                   "{testimonials[0].quote}"
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -346,7 +344,7 @@ export default function Testimonials() {
                     </span>
                   ))}
                 </div>
-                <meta itemProp="reviewRating" content="5" />
+                <meta content="5" />
               </article>
             </div>
 
@@ -357,8 +355,6 @@ export default function Testimonials() {
                   key={index}
                   className="card-hover relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-[#45A29E]/20 bg-[#1F2833] p-6 transition-all hover:border-[#66FCF1]/40"
                   role="listitem"
-                  itemScope
-                  itemType="https://schema.org/Review"
                 >
                   <Quote
                     className="absolute right-4 top-4 h-8 w-8 text-[#66FCF1]/10"
@@ -371,7 +367,7 @@ export default function Testimonials() {
                       {testimonial.avatar}
                     </div>
                     <div className="flex-1">
-                      <div className="text-sm font-semibold text-white" itemProp="author">
+                      <div className="text-sm font-semibold text-white">
                         {testimonial.name}
                       </div>
                       <div className="text-xs text-[#66FCF1]">{testimonial.role}</div>
@@ -394,7 +390,6 @@ export default function Testimonials() {
                   {/* Quote */}
                   <p
                     className="flex-1 text-sm leading-relaxed text-[#C5C6C7]"
-                    itemProp="reviewBody"
                   >
                     "{testimonial.quote}"
                   </p>
@@ -421,7 +416,7 @@ export default function Testimonials() {
                   {/* Date */}
                   <div className="mt-2 text-xs text-[#C5C6C7]">{testimonial.date}</div>
 
-                  <meta itemProp="reviewRating" content="5" />
+                  <meta content="5" />
                 </article>
               ))}
             </div>
