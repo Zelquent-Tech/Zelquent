@@ -1,1 +1,188 @@
-if(!self.define){let s,e={};const l=(l,i)=>(l=new URL(l+".js",i).href,e[l]||new Promise(e=>{if("document"in self){const s=document.createElement("script");s.src=l,s.onload=e,document.head.appendChild(s)}else s=l,importScripts(l),e()}).then(()=>{let s=e[l];if(!s)throw new Error(`Module ${l} didn’t register its module`);return s}));self.define=(i,r)=>{const n=s||("document"in self?document.currentScript.src:"")||location.href;if(e[n])return;let u={};const o=s=>l(s,n),t={module:{uri:n},exports:u,require:o};e[n]=Promise.all(i.map(s=>t[s]||o(s))).then(s=>(r(...s),u))}}define(["./workbox-8c29f6e4"],function(s){"use strict";self.skipWaiting(),s.clientsClaim(),s.precacheAndRoute([{url:"registerSW.js",revision:"1872c500de691dce40960bb85481de07"},{url:"offline.html",revision:"aa374cce8677452f0dd0317f30b08d87"},{url:"index.html",revision:"886d63bc23e289f217133ecfc210d3df"},{url:"assets/js/vendor-khYhNm7z.js",revision:null},{url:"assets/js/users-CjU4v6ZB.js",revision:null},{url:"assets/js/thumbs-up-D2MEcIZ4.js",revision:null},{url:"assets/js/Testimonials-o938mDE8.js",revision:null},{url:"assets/js/TechStack-BFIn07jU.js",revision:null},{url:"assets/js/star-D6GrOfmP.js",revision:null},{url:"assets/js/sparkles-Q8mIdy6m.js",revision:null},{url:"assets/js/shield-DLMGoz1J.js",revision:null},{url:"assets/js/Services-B4HwjQBZ.js",revision:null},{url:"assets/js/server-DKgQTHtm.js",revision:null},{url:"assets/js/send-2--7nvZ8.js",revision:null},{url:"assets/js/rocket-Bh3w9-6w.js",revision:null},{url:"assets/js/Portfolio-YQNS0ZoW.js",revision:null},{url:"assets/js/palette-CDaZ_Tgk.js",revision:null},{url:"assets/js/message-circle-bGqOrSew.js",revision:null},{url:"assets/js/index-w3UT0QrD.js",revision:null},{url:"assets/js/Home-CrzTwkdP.js",revision:null},{url:"assets/js/github-XiZPcrvG.js",revision:null},{url:"assets/js/database-DtbYZ62C.js",revision:null},{url:"assets/js/Contact-IKMR_4mO.js",revision:null},{url:"assets/js/clock-CxxPsQa9.js",revision:null},{url:"assets/js/circle-check-D3UouiTr.js",revision:null},{url:"assets/js/circle-check-big-DZp-s3es.js",revision:null},{url:"assets/js/bot-lLt0IJ8J.js",revision:null},{url:"assets/js/award-CzCObmJj.js",revision:null},{url:"assets/js/AIAssistant-9-bzHEAn.js",revision:null},{url:"assets/js/About-rGEf5LFi.js",revision:null},{url:"assets/css/index-DoGl1sj-.css",revision:null},{url:"apple-touch-icon.png",revision:"9603b01c86c23271dca06ed1cef44254"},{url:"favicon-16x16.png",revision:"ebf5a429032e962331321e0df555d402"},{url:"favicon-32x32.png",revision:"9a12faa801ceada2b55982f4814020d9"}],{}),s.cleanupOutdatedCaches(),s.registerRoute(new s.NavigationRoute(s.createHandlerBoundToURL("index.html")))});
+// Service Worker for Zelquent Tech - Enhanced Version
+const CACHE_NAME = 'zelquent-tech-v2'; // Increment version when updating
+const OFFLINE_URL = '/offline.html';
+
+// Assets to cache immediately on install
+const PRECACHE_ASSETS = [
+  '/',
+  '/index.html',
+  '/offline.html',
+  '/favicon-192x192.png',
+  '/favicon-512x512.png',
+  '/apple-touch-icon.png',
+  '/manifest.json',
+  '/src/main.jsx',
+  '/src/assets/images/Zelquent-icon.png'
+];
+
+// Assets to cache after install (runtime caching)
+const RUNTIME_CACHE_ASSETS = [
+  '/src/assets/images/hero.jpg',
+  '/src/assets/future-projects/future-project-1.png',
+  '/src/assets/future-projects/future-project-2.png',
+  '/src/assets/future-projects/future-project-3.png',
+  '/src/assets/projects/project-image-1.png',
+  '/src/assets/projects/project-image-2.png',
+  '/src/assets/projects/project-image-3.png',
+  '/src/assets/projects/project-image-4.png'
+];
+
+// Install event - precache critical assets
+self.addEventListener('install', event => {
+  console.log('[Service Worker] Installing...');
+  
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('[Service Worker] Precaching app assets');
+        return cache.addAll(PRECACHE_ASSETS);
+      })
+      .then(() => {
+        console.log('[Service Worker] Skip waiting on install');
+        return self.skipWaiting();
+      })
+      .catch(error => {
+        console.error('[Service Worker] Precaching failed:', error);
+      })
+  );
+});
+
+// Activate event - clean up old caches
+self.addEventListener('activate', event => {
+  console.log('[Service Worker] Activating...');
+  
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName !== CACHE_NAME) {
+            console.log('[Service Worker] Deleting old cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    }).then(() => {
+      console.log('[Service Worker] Claiming clients');
+      return self.clients.claim();
+    })
+  );
+});
+
+// Fetch event - network-first for navigations, cache-first for assets
+self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+  
+  // Skip cross-origin requests
+  if (url.origin !== self.location.origin) {
+    return;
+  }
+
+  // Handle page navigations (HTML requests)
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          // Cache the page for offline
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseClone);
+          });
+          return response;
+        })
+        .catch(() => {
+          console.log('[Service Worker] Serving offline page');
+          return caches.match(OFFLINE_URL);
+        })
+    );
+    return;
+  }
+
+  // Handle asset requests (images, JS, CSS) - cache-first strategy
+  if (event.request.url.match(/\.(js|css|png|jpg|jpeg|svg|ico|json)$/)) {
+    event.respondWith(
+      caches.match(event.request)
+        .then(cachedResponse => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          
+          return fetch(event.request).then(networkResponse => {
+            // Cache the fetched response
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, responseClone);
+            });
+            return networkResponse;
+          });
+        })
+        .catch(() => {
+          // Return a fallback for images if offline
+          if (event.request.url.match(/\.(png|jpg|jpeg|svg)$/)) {
+            return caches.match('/favicon-192x192.png');
+          }
+          return new Response('Network error', { status: 408 });
+        })
+    );
+    return;
+  }
+
+  // Default fetch behavior (network first, fallback to cache)
+  event.respondWith(
+    fetch(event.request)
+      .catch(() => {
+        return caches.match(event.request);
+      })
+  );
+});
+
+// Background sync for offline form submissions (optional)
+self.addEventListener('sync', event => {
+  if (event.tag === 'contact-form-sync') {
+    console.log('[Service Worker] Background sync triggered');
+    event.waitUntil(syncContactForms());
+  }
+});
+
+// Function to sync offline contact forms
+async function syncContactForms() {
+  try {
+    // Implement if you have offline form submission
+    console.log('[Service Worker] Syncing contact forms');
+  } catch (error) {
+    console.error('[Service Worker] Sync failed:', error);
+  }
+}
+
+// Handle push notifications (for future use)
+self.addEventListener('push', event => {
+  const options = {
+    body: event.data ? event.data.text() : 'New update from Zelquent Tech',
+    icon: '/favicon-192x192.png',
+    badge: '/favicon-192x192.png',
+    vibrate: [200, 100, 200],
+    data: {
+      dateOfArrival: Date.now(),
+      primaryKey: 1
+    }
+  };
+
+  event.waitUntil(
+    self.registration.showNotification('Zelquent Tech', options)
+  );
+});
+
+// Handle notification clicks
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  
+  event.waitUntil(
+    clients.openWindow('/')
+  );
+});
+
+// Message event for client communication
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});

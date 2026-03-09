@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import compression from 'vite-plugin-compression';
 import { visualizer } from 'rollup-plugin-visualizer';
-import { VitePWA } from 'vite-plugin-pwa';
 import { resolve } from 'path';
 
 export default defineConfig(({ mode }) => {
@@ -27,14 +26,6 @@ export default defineConfig(({ mode }) => {
           algorithm: 'brotliCompress',
           ext: '.br',
           threshold: 10240,
-        }),
-
-      // PWA (Production only)
-      isProduction &&
-        VitePWA({
-          registerType: 'autoUpdate',
-          includeAssets: ['favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png'],
-          manifest: false,
         }),
 
       // Bundle Analyzer (run with --mode analyze)
