@@ -63,7 +63,7 @@ const projects = [
     links: [
       {
         label: "Live Demo",
-        href: "https://medi-sync-eight.vercel.app/",
+        href: "https://hospital-webapp-gn20.onrender.com/",
         icon: <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />,
         type: "demo"
       },
