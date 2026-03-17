@@ -63,16 +63,10 @@ const projects = [
     links: [
       {
         label: "Live Demo",
-        href: "https://zelquent-hospital-management.onrender.com/",
+        href: "https://medi-sync-eight.vercel.app/",
         icon: <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />,
         type: "demo"
       },
-      {
-        label: "GitHub",
-        href: "https://github.com/ZelqentTech/hospital-management",
-        icon: <Github className="w-3.5 h-3.5" aria-hidden="true" />,
-        type: "github"
-      }
     ],
     seo: {
       keywords: ["hospital management system", "healthcare software", "patient management", "medical records system"],
@@ -115,12 +109,6 @@ const projects = [
         icon: <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />,
         type: "demo"
       },
-      {
-        label: "GitHub",
-        href: "https://github.com/ZelqentTech/report-generation",
-        icon: <Github className="w-3.5 h-3.5" aria-hidden="true" />,
-        type: "github"
-      }
     ],
     seo: {
       keywords: ["AI report generation", "educational software", "student progress tracking", "automated reporting"],
