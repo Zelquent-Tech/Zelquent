@@ -1,19 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import { 
-  Monitor, 
-  Palette, 
-  Server, 
-  Bot, 
-  Cloud, 
-  ArrowRight, 
-  CheckCircle, 
+import {
+  Monitor,
+  Palette,
+  Server,
+  Bot,
+  Cloud,
+  ArrowRight,
+  CheckCircle,
   Zap,
   Shield,
   Clock,
   Users,
   Rocket,
   Code2,
-  Gauge
+  Gauge,
+  PartyPopper
 } from 'lucide-react';
 import { Helmet } from "react-helmet-async";
 
@@ -32,7 +33,7 @@ const services = [
     timeline: "4-8 weeks",
     features: [
       "Responsive UI with React & TailwindCSS",
-      "RESTful API with Spring Boot/Node.js", 
+      "RESTful API with Spring Boot/Node.js",
       "Database design & optimization (SQL/NoSQL)",
       "Cloud deployment (AWS/Vercel/Netlify)",
       "Post-launch support & maintenance",
@@ -64,6 +65,29 @@ const services = [
     seo: {
       keywords: ["UI UX design services", "accessible design", "WCAG compliance", "Figma design", "prototyping"],
       description: "Professional UI/UX design services with WCAG 2.1 compliance. Create beautiful, accessible interfaces that convert."
+    }
+  },
+  {
+    icon: <PartyPopper className="w-7 h-7 text-[#66FCF1]" aria-hidden="true" />,
+    title: "Digital Invitation Websites",
+    shortTitle: "Event Invitations",
+    desc: "Beautiful digital invitation websites for weddings, engagements, birthdays, and special events with RSVP, gallery, countdown, and map integration.",
+    longDesc: "We design elegant and responsive digital invitation websites for weddings and special occasions. Each invitation is crafted to help you share event details beautifully, collect guest RSVPs, and create a memorable online experience.",
+    stack: ["React", "Next.js", "TailwindCSS", "RSVP Forms", "Google Maps", "Responsive UI"],
+    price: "₹5,000+",
+    priceRange: "₹5,000 - ₹30,000",
+    timeline: "1-2 weeks",
+    features: [
+      "Personalized event invitation website",
+      "Event details with schedule section",
+      "Google Maps venue integration",
+      "Guest RSVP/contact form",
+      "Countdown timer and photo gallery",
+      "Mobile-friendly design with WhatsApp sharing"
+    ],
+    seo: {
+      keywords: ["digital invitation website", "event invitation website", "online invitation design", "custom invitation website"],
+      description: "Custom digital invitation website services for weddings, engagements, birthdays, and events."
     }
   },
   {
@@ -139,27 +163,27 @@ const services = [
 
 // Process steps
 const steps = [
-  { 
-    num: "01", 
-    title: "Discovery", 
+  {
+    num: "01",
+    title: "Discovery",
     desc: "We learn about your goals, users, and constraints through a focused kickoff call.",
     icon: <Users className="w-5 h-5" />
   },
-  { 
-    num: "02", 
-    title: "Design", 
+  {
+    num: "02",
+    title: "Design",
     desc: "Wireframes and prototypes are shared for feedback before a single line of code is written.",
     icon: <Palette className="w-5 h-5" />
   },
-  { 
-    num: "03", 
-    title: "Build", 
+  {
+    num: "03",
+    title: "Build",
     desc: "Iterative development with weekly updates and a staging environment for your review.",
     icon: <Code2 className="w-5 h-5" />
   },
-  { 
-    num: "04", 
-    title: "Launch", 
+  {
+    num: "04",
+    title: "Launch",
     desc: "Deployment, testing, and 2-week post-launch support to ensure everything runs smoothly.",
     icon: <Rocket className="w-5 h-5" />
   },
@@ -208,52 +232,52 @@ export default function Services() {
         />
         <meta name="author" content="Zelquent Tech" />
         <meta name="robots" content="index, follow" />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content="Professional Web Development & AI Integration Services | Zelquent Tech" />
         <meta property="og:description" content="Full-stack development, UI/UX design, AI integration, and DevOps services. Custom solutions with modern technologies." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://zelquent.com/services" />
         <meta property="og:image" content="https://zelquent.com/services-og-image.jpg" />
-        
+
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Professional Web Development & AI Integration Services" />
         <meta name="twitter:description" content="Full-stack development, UI/UX design, AI integration, and DevOps services." />
-        
+
         {/* Canonical URL */}
         <link rel="canonical" href="https://zelquent.com/services" />
-        
+
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify(servicesStructuredData)}
         </script>
       </Helmet>
 
-      <div className="min-h-screen bg-[#0B0C10] ">
+      <div className="min-h-screen bg-[#0B0C10]">
         {/* Hero Section */}
-        <section 
+        <section
           className="grid-bg relative py-16 border-b border-[#1F2833] overflow-hidden"
           aria-labelledby="services-hero-heading"
         >
           {/* Background decoration */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#66FCF1]/5 via-transparent to-transparent" aria-hidden="true" />
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
             <span className="text-[#66FCF1] text-xs font-semibold uppercase tracking-widest">
               What We Offer
             </span>
-            <h1 
-              id="services-hero-heading" 
+            <h1
+              id="services-hero-heading"
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-3 mb-4 cyan-glow"
             >
               Services Built to <span className="text-[#66FCF1]">Scale</span>
             </h1>
             <p className="text-[#C5C6C7] text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-6">
-              Custom packages available on request. Starting prices are guidelines — we tailor every project 
+              Custom packages available on request. Starting prices are guidelines — we tailor every project
               to your exact needs with transparent pricing and no hidden costs.
             </p>
-            
+
             {/* Quick stats */}
             <div className="flex flex-wrap justify-center gap-6 mb-8">
               {stats.map(stat => (
@@ -277,17 +301,17 @@ export default function Services() {
         </section>
 
         {/* Services Grid */}
-        <section 
+        <section
           className="py-20"
           aria-labelledby="services-grid-heading"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="services-grid-heading" className="sr-only">Our Services</h2>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8" role="list">
               {services.map((service) => (
-                <article 
-                  key={service.title} 
+                <article
+                  key={service.title}
                   className="card-hover bg-[#1F2833] border border-[#45A29E]/20 rounded-2xl p-8 flex flex-col gap-4 hover:border-[#66FCF1]/40 transition-all"
                   role="listitem"
                   aria-label={`${service.title} service`}
@@ -323,13 +347,13 @@ export default function Services() {
                   </ul>
 
                   {/* Technology stack */}
-                  <div 
-                    className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-[#45A29E]/20" 
+                  <div
+                    className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-[#45A29E]/20"
                     aria-label={`Technologies used for ${service.title}`}
                   >
                     {service.stack.map((tech) => (
-                      <span 
-                        key={tech} 
+                      <span
+                        key={tech}
                         className="text-xs bg-[#0B0C10] border border-[#45A29E]/40 text-[#45A29E] px-3 py-1.5 rounded-md"
                       >
                         {tech}
@@ -352,7 +376,7 @@ export default function Services() {
         </section>
 
         {/* Process Section */}
-        <section 
+        <section
           className="py-20 bg-[#1F2833]/30"
           aria-labelledby="process-heading"
         >
@@ -373,8 +397,8 @@ export default function Services() {
             {/* Process steps */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
               {steps.map((step, index) => (
-                <div 
-                  key={step.num} 
+                <div
+                  key={step.num}
                   className="relative group"
                   role="listitem"
                 >
@@ -388,7 +412,7 @@ export default function Services() {
                         {step.num}
                       </span>
                     </div>
-                    
+
                     {/* Content */}
                     <h3 className="text-white font-semibold text-xl mb-2">{step.title}</h3>
                     <p className="text-[#C5C6C7] text-sm leading-relaxed">{step.desc}</p>
@@ -396,7 +420,7 @@ export default function Services() {
 
                   {/* Connector arrow (desktop only) */}
                   {index < steps.length - 1 && (
-                    <div 
+                    <div
                       className="hidden lg:flex absolute top-1/2 -right-4 z-10 w-8 h-8 items-center justify-center bg-[#1F2833] border border-[#45A29E]/30 rounded-full group-hover:border-[#66FCF1]/50 transition-all"
                       aria-hidden="true"
                     >
@@ -436,7 +460,7 @@ export default function Services() {
                 <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 mb-6">
                   More Than Just <span className="text-[#66FCF1]">Code</span>
                 </h2>
-                
+
                 <div className="space-y-4">
                   {[
                     {
@@ -475,7 +499,7 @@ export default function Services() {
                   { number: "100%", label: "Client Satisfaction", icon: <Users className="w-5 h-5" /> },
                   { number: "24/7", label: "Support Available", icon: <Clock className="w-5 h-5" /> },
                 ].map((stat) => (
-                  <div 
+                  <div
                     key={stat.label}
                     className="bg-[#1F2833] border border-[#45A29E]/20 rounded-2xl p-6 text-center hover:border-[#66FCF1]/40 transition-all"
                   >
@@ -498,14 +522,14 @@ export default function Services() {
               {/* Background effects */}
               <div className="absolute inset-0 grid-bg opacity-40" aria-hidden="true" />
               <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#66FCF1]/5 rounded-full blur-3xl" aria-hidden="true" />
-              
+
               {/* Content */}
               <div className="relative">
                 <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
                   Not Sure Which Service You Need?
                 </h2>
                 <p className="text-[#C5C6C7] text-lg mb-8 max-w-2xl mx-auto">
-                  Let's discuss your project requirements and find the perfect solution together. 
+                  Let's discuss your project requirements and find the perfect solution together.
                   We offer free 30-minute consultation calls.
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center">

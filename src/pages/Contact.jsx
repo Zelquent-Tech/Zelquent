@@ -31,6 +31,7 @@ const projectTypes = [
   { value: "Website Redesign", label: "Website Redesign", icon: "🔄" },
   { value: "MVP Development", label: "MVP Development", icon: "🎯" },
   { value: "E-commerce Platform", label: "E-commerce Platform", icon: "🛍️" },
+  { value: "Digital Invitation Websites", label: "Digital Invitation Websites", icon: "💍" },
   { value: "Other", label: "Other", icon: "💡" },
 ];
 

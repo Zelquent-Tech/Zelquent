@@ -16,7 +16,8 @@ import {
   Eye,
   Figma,
   Shield,
-  Rocket
+  Rocket,
+  PartyPopper
 } from 'lucide-react';
 import { Helmet } from "react-helmet-async";
 
@@ -26,6 +27,7 @@ import ProjectImg from "../assets/projects/project-image-1.jpg";
 import ReportImg from "../assets/projects/project-image-2.jpg";
 import ZelquentAi from "../assets/projects/project-image-3.jpg";
 import E_CommcerceImg from "../assets/projects/project-image-4.jpg";
+import WeddingImg from "../assets/projects/project-image-5.webp";
 
 
 
@@ -199,6 +201,48 @@ const projects = [
       keywords: ["e-commerce UI design", "mobile app design", "Figma design", "shopping app UI", "UX design"],
       description: "Modern e-commerce mobile UI design with 50+ screens including product browsing, checkout, and admin dashboard."
     }
+  },
+  {
+    id: "digital-invitation-websites",
+    img: WeddingImg,
+    icon: <PartyPopper className="w-5 h-5" aria-hidden="true" />,
+    title: "Digital Invitation Websites",
+    shortTitle: "Event Invitations",
+    type: "Event Website Solution",
+    category: "full-stack",
+    stack: ["React", "Next.js", "TailwindCSS", "RSVP Forms", "Google Maps", "Responsive UI"],
+    overview: "A modern digital invitation website solution for weddings, engagements, birthdays, and special events with RSVP, gallery, countdown, and venue details.",
+    longDescription: "This digital invitation website solution helps clients create elegant, mobile-friendly, and personalized event websites for special occasions. It includes guest RSVP collection, event schedules, photo galleries, map integration, and easy sharing to deliver a memorable online experience.",
+    features: [
+      "Personalized event invitation landing page",
+      "Event date, time, and venue details",
+      "Google Maps location integration",
+      "Guest RSVP/contact form",
+      "Countdown timer and photo gallery",
+      "Mobile-friendly design with easy sharing"
+    ],
+    challenges: [
+      "Designing invitation pages that feel premium and personal",
+      "Making the website fully responsive across all devices",
+      "Simplifying RSVP collection for event organizers"
+    ],
+    solutions: [
+      "Built customizable layouts with elegant UI sections",
+      "Used responsive design principles for mobile-first experience",
+      "Integrated simple RSVP forms with clear guest interaction flow"
+    ],
+    links: [
+      {
+        label: "Live Demo",
+        href: "https://wedding-card-s57w.onrender.com/",
+        icon: <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />,
+        type: "demo"
+      }
+    ],
+    seo: {
+      keywords: ["digital invitation website", "wedding invitation website", "event website design", "online invitation platform"],
+      description: "Elegant digital invitation website solution for weddings, engagements, birthdays, and special events with RSVP and gallery features."
+    }
   }
 ];
 
@@ -323,8 +367,8 @@ export default function Portfolio() {
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-[#66FCF1] focus:ring-offset-2 focus:ring-offset-[#0B0C10] ${activeCategory === category.id
-                      ? 'bg-[#66FCF1] text-[#0B0C10]'
-                      : 'bg-[#1F2833] border border-[#45A29E]/20 text-[#C5C6C7] hover:border-[#66FCF1] hover:text-[#66FCF1]'
+                    ? 'bg-[#66FCF1] text-[#0B0C10]'
+                    : 'bg-[#1F2833] border border-[#45A29E]/20 text-[#C5C6C7] hover:border-[#66FCF1] hover:text-[#66FCF1]'
                     }`}
                   role="tab"
                   aria-selected={activeCategory === category.id}
@@ -446,8 +490,8 @@ export default function Portfolio() {
                           key={linkIndex}
                           href={link.href}
                           className={`flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-[#66FCF1] focus:ring-offset-2 focus:ring-offset-[#1F2833] ${link.type === 'demo' || link.type === 'figma'
-                              ? 'bg-[#66FCF1] text-[#0B0C10] hover:bg-[#45A29E]'
-                              : 'border border-[#45A29E] text-[#C5C6C7] hover:border-[#66FCF1] hover:text-[#66FCF1]'
+                            ? 'bg-[#66FCF1] text-[#0B0C10] hover:bg-[#45A29E]'
+                            : 'border border-[#45A29E] text-[#C5C6C7] hover:border-[#66FCF1] hover:text-[#66FCF1]'
                             }`}
                           aria-label={`${link.label} for ${project.title}`}
                           target="_blank"
