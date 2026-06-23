@@ -90,7 +90,7 @@ const faqs = [
 // Quick contact options
 const quickContacts = [
   { icon: <Mail className="w-4 h-4" aria-hidden="true" />, label: "Email", value: "zelquent.tech@gmail.com", href: "mailto:zelquent.tech@gmail.com" },
-  { icon: <MessageCircle className="w-4 h-4" aria-hidden="true" />, label: "WhatsApp", value: "+91 7010135953", href: "https://wa.me/917010135953" },
+  { icon: <MessageCircle className="w-4 h-4" aria-hidden="true" />, label: "WhatsApp", value: "+91 710135953", href: "https://wa.me/91710135953" },
   { icon: <Clock className="w-4 h-4" aria-hidden="true" />, label: "Response Time", value: "< 24 hours", href: null },
 ];
 

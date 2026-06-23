@@ -44,7 +44,7 @@
       "name": "Services",
       "short_name": "Services",
       "description": "View our development services",
-      "url": "/#services",
+      "url": "/services",
       "icons": [
         {
           "src": "/favicon-96x96.png",
@@ -57,7 +57,7 @@
       "name": "Portfolio",
       "short_name": "Portfolio",
       "description": "See our recent projects",
-      "url": "/#portfolio",
+      "url": "/portfolio",
       "icons": [
         {
           "src": "/favicon-96x96.png",
